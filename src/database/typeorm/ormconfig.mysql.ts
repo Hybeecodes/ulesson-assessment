@@ -13,7 +13,7 @@ const options: TypeOrmModuleOptions = {
   username: config.DB_USER,
   password: config.DB_PASS,
   database: config.DB_NAME,
-  entities: [`${__dirname}/../**/*.entity.{ts,js}`],
+  entities: [`${__dirname}/../../entities/*.{ts,js}`],
   migrations: [`${__dirname}/../migrations/*.{ts,js}`],
   namingStrategy: new TypeOrmNamingStrategy(),
   synchronize: false,
