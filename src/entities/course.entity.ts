@@ -11,8 +11,10 @@ export class Course extends BaseEntity {
   description: string;
 
   @Column('varchar', { nullable: true, length: 255 })
-  image_url: string;
+  imageUrl: string;
 
   @OneToMany(() => Chapter, (chapter) => chapter.course)
   chapters: Chapter[];
+
+  lessonsCount: number; // not an actual column in the database
 }

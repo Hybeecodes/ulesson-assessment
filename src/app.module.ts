@@ -8,6 +8,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './utils/interceptors/logging.interceptor';
 import { HttpErrorFilter } from './utils/filters/http-exception.filter';
 import { AuthModule } from './auth/auth.module';
+import { LessonModule } from './lesson/lesson.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AuthModule } from './auth/auth.module';
       useClass: TypeOrmOptionsService,
     }),
     AuthModule,
+    LessonModule,
   ],
   controllers: [AppController],
   providers: [

@@ -34,5 +34,6 @@ export class QuizQuestion extends BaseEntity {
    *   "text": "Option 3",
    *   "isCorrect": false
    * }
+   * ]
    */
 }

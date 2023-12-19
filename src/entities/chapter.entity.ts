@@ -12,7 +12,7 @@ export class Chapter extends BaseEntity {
   description: string;
 
   @Column('varchar', { nullable: true, length: 255 })
-  image_url: string;
+  imageUrl: string;
 
   @ManyToOne(() => Course, (course) => course.chapters)
   @JoinColumn({ name: 'course_id' })

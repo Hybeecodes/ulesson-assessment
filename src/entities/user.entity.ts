@@ -16,10 +16,10 @@ export class User extends BaseEntity {
   password: string;
 
   @OneToMany(() => UserCourse, (userCourse) => userCourse.user)
-  courses: UserCourse[];
+  courses?: UserCourse[];
 
   @OneToMany(() => UserCourse, (userLesson) => userLesson.user)
-  lessons: UserLesson[];
+  lessons?: UserLesson[];
 
   @BeforeInsert()
   hashPassword() {

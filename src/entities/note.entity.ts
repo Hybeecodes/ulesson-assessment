@@ -1,5 +1,5 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { Lesson } from './lesson.entity';
 import { User } from './user.entity';
 
@@ -12,8 +12,16 @@ export class Note extends BaseEntity {
   timestampInSeconds: string;
 
   @ManyToOne(() => Lesson, (lesson) => lesson.notes)
+  @JoinColumn({ name: 'lesson_id' })
   lesson: Lesson;
 
+  @Column({ name: 'lesson_id' })
+  lessonId: string;
+
   @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @Column({ name: 'user_id' })
+  userId: string;
 }

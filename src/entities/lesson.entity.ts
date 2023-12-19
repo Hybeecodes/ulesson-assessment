@@ -13,10 +13,10 @@ export class Lesson extends BaseEntity {
   description: string;
 
   @Column('varchar', { nullable: true, length: 255 })
-  image_url: string;
+  imageUrl: string;
 
   @Column('varchar', { nullable: false, length: 255 })
-  video_url: string;
+  videoUrl: string;
 
   @OneToMany(() => Note, (note) => note.lesson)
   notes: Note[];
