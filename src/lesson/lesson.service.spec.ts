@@ -18,6 +18,8 @@ import { MockUserCourseRepository } from '../../test/mocks/repositories/mock.use
 import { ListCoursesQueryDto } from './dtos/list-courses-query.dto';
 import { getRecords as getCourseRecords } from '../../test/mocks/fixtures/course.fixture';
 import { CourseDto } from './dtos/course.dto';
+import { ConfigModule } from '@nestjs/config';
+import { SharedModule } from '../shared/shared.module';
 
 describe('LessonService', () => {
   let service: LessonService;
@@ -32,6 +34,12 @@ describe('LessonService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        ConfigModule.forRoot({
+          envFilePath: ['test.env'],
+        }),
+        SharedModule,
+      ],
       providers: [
         LessonService,
         {
@@ -108,7 +116,6 @@ describe('LessonService', () => {
         stubbedCount,
       ]);
       const response = await service.listAllCourses(query);
-      console.log(response);
       expect(response).toBeDefined();
       expect(response.data).toHaveLength(stubbedCount);
       const expectedCourses = stubbedCourses.map((course) => {

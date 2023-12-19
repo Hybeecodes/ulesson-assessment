@@ -9,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { IS_PUBLIC_KEY } from '../meta/skip-auth';
 import { Reflector } from '@nestjs/core';
 import { Logger, UnauthorizedException } from '@nestjs/common';
+import { UserService } from '../../user/user.service';
 
 @Injectable()
 export class UserAuthGuard implements CanActivate {
@@ -16,6 +17,7 @@ export class UserAuthGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
     private reflector: Reflector,
+    private readonly userService: UserService,
   ) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
@@ -34,7 +36,6 @@ export class UserAuthGuard implements CanActivate {
     headers: { authorization: string };
   }): Promise<any> {
     const { authorization } = request.headers;
-    console.log('authorization', authorization);
     if (!authorization) {
       throw new UnauthorizedException('No Authorization Token');
     }
@@ -45,8 +46,7 @@ export class UserAuthGuard implements CanActivate {
     const token = authArr[1];
     try {
       const { id: userId } = this.jwtService.decode(token) as { id: string };
-      console.log('userId', userId);
-      const user = null;
+      const user = await this.userService.getUserById(userId);
       if (!user) {
         throw new UnauthorizedException('Invalid Authorization Token');
       }

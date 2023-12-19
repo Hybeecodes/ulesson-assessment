@@ -16,7 +16,7 @@ export class MockUserRepository
     return Promise.resolve(undefined);
   }
 
-  findUserById(userId: number): Promise<User> {
+  findUserById(userId: string): Promise<User> {
     return Promise.resolve(undefined);
   }
 }

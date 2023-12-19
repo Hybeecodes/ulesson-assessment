@@ -9,6 +9,7 @@ import { LoggingInterceptor } from './utils/interceptors/logging.interceptor';
 import { HttpErrorFilter } from './utils/filters/http-exception.filter';
 import { AuthModule } from './auth/auth.module';
 import { LessonModule } from './lesson/lesson.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { LessonModule } from './lesson/lesson.module';
     }),
     AuthModule,
     LessonModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [

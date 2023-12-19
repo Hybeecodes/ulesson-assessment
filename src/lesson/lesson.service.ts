@@ -117,7 +117,7 @@ export class LessonService {
     }
   }
 
-  async listCourseChapter(
+  async listCourseChapters(
     courseId: string,
     query: ListChaptersQueryDto,
   ): Promise<PaginatedData<ChapterDto>> {
@@ -150,7 +150,7 @@ export class LessonService {
     }
   }
 
-  async enrollCourse(userId: string, courseId: string): Promise<void> {
+  async enrollInCourse(userId: string, courseId: string): Promise<void> {
     const course = await this.courseRepository.findOne({
       where: { id: courseId },
     });
@@ -171,37 +171,40 @@ export class LessonService {
     }
   }
 
-  // async listCourseLessons(courseId: string): Promise<LessonDto> {}
-  //
-  // listChapterLessons(chapterId: string): Promise<PaginatedData<LessonDto>> {}
-  //
-  // async getLesson(lessonId: string): Promise<LessonDto> {}
-  //
-  // async getCourseProgress(
-  //   userId: string,
-  //   courseId: string,
-  // ): Promise<CourseProgressDto> {}
-  //
-  // async markLessonAsComplete(userId: string, lessonId: string): Promise<void> {}
-  //
-  // async markLessonAsComplete(userId: string, lessonId: string): Promise<void> {}
-  //
-  // async addNoteToLesson(
-  //   userId: string,
-  //   lessonId: string,
-  //   note: string,
-  // ): Promise<void> {}
-  //
-  // async updateLessonProgress(
-  //   userId: string,
-  //   lessonId: string,
-  //   progress: number,
-  // ): Promise<void> {}
-  //
-  // async listLessonQuizzes(lessonId: string): Promise<PaginatedData<QuizDto>> {}
-  //
-  // async addLessonQuiz(
-  //   lessonId: string,
-  //   quiz: CreateQuizDto,
-  // ): Promise<QuizDto> {}
+  /**
+  async listCourseLessons(courseId: string): Promise<LessonDto> {}
+
+  listChapterLessons(chapterId: string): Promise<PaginatedData<LessonDto>> {}
+
+  async getLesson(lessonId: string): Promise<LessonDto> {}
+
+  async getCourseProgress(
+    userId: string,
+    courseId: string,
+  ): Promise<CourseProgressDto> {}
+
+  async markLessonAsComplete(userId: string, lessonId: string): Promise<void> {}
+
+  async markLessonAsComplete(userId: string, lessonId: string): Promise<void> {}
+
+  async addNoteToLesson(
+    userId: string,
+    lessonId: string,
+    note: string,
+  ): Promise<void> {}
+
+  async updateLessonProgress(
+    userId: string,
+    lessonId: string,
+    progress: number,
+  ): Promise<void> {}
+
+  async listLessonQuizzes(lessonId: string): Promise<PaginatedData<QuizDto>> {}
+
+  async addLessonQuiz(
+    lessonId: string,
+    quiz: CreateQuizDto,
+  ): Promise<QuizDto> {}
+
+    **/
 }

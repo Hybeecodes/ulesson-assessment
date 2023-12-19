@@ -11,7 +11,7 @@ export class UserRepository
   constructor(private readonly dataSource: DataSource) {
     super(User, dataSource.createEntityManager());
   }
-  async findUserById(userId: number): Promise<User> {
+  async findUserById(userId: string): Promise<User> {
     return this.createQueryBuilder('user')
       .where('user.id = :userId', { userId })
       .andWhere('user.deletedAt IS NULL')

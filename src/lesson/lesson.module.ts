@@ -16,9 +16,13 @@ import { LessonRepository } from '../repositories/lesson/lesson.repository';
 import { Lesson } from '../entities/lesson.entity';
 import { LessonQuizRepository } from '../repositories/lesson-quiz/lesson-group.repository';
 import { UserLessonRepository } from '../repositories/user-lesson/user-lesson.repository';
+import { SharedModule } from '../shared/shared.module';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
+    SharedModule,
+    UserModule,
     TypeOrmModule.forFeature([
       Chapter,
       Course,
